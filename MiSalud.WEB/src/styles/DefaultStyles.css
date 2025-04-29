@@ -5,6 +5,9 @@
     --light-cyan: #28BBC9;
     --dark-cyan: #4D7B80; 
     --width-breaker: 430px;
+    --light-bold: 300;
+    --medium-bold: 500;
+    --bold: 700;
 }
 * 
 {
@@ -29,6 +32,7 @@ html, body
     height: 100%;
     scroll-behavior: smooth;
 }
+
   
     
   

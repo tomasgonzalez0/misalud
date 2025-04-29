@@ -1,0 +1,27 @@
+@import url(../../../../styles/DefaultStyles.css);
+
+.WelcomeUser
+{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.WelcomeUserMessage
+{
+    font-weight: var(--medium-bold);
+    color: var(--light-cyan);
+    font-size: 1.5rem;
+}
+.userAvatarContainer
+{
+    display: flex;
+    align-items: center;
+}
+
+.userAvatarContainer img
+{
+    width: 50px;
+}
