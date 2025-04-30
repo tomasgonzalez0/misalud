@@ -1,0 +1,21 @@
+@import url('../../styles/DefaultStyles.css');
+.OptionButton {
+    background-color: white;
+    border: none;
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #1dbfd0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 90%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .OptionButton:hover {
+    color: var(--dark-cyan);
+    transition: 0.5s;
+  }
+  

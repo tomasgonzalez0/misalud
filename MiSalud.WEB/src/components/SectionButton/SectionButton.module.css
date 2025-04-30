@@ -11,7 +11,7 @@
     background: var(--gray);
     align-items: center;
     justify-content: space-between;
-    width: 89%;
+    width: 90%;
     max-height: 130px;
     padding: 20px;
     border-radius: 10px;
@@ -25,4 +25,14 @@
 .SectionButtonContainer img{
     width: 119px;
     height: 100px;
+}
+.SectionButtonContainer:hover,.SectionButtonContainer:hover h2 {
+    cursor: pointer;
+    color: var(--dark-cyan);
+    transition: 0.5s;
+}
+
+.SectionButtonName:hover{
+    color: var(--dark-cyan);
+    transition: 0.5s;
 }

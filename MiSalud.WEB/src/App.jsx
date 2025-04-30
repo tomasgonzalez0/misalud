@@ -6,7 +6,7 @@ import FooterBar from './components/FooterBar/FooterBar'
 function App() {
   return (
     <>
-      <Home />
+      <Administracion />
       <FooterBar />
     </>
   )
