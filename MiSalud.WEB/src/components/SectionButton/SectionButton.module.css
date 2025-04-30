@@ -1,0 +1,27 @@
+.SectionButton
+{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.SectionButtonContainer{
+    display: flex;
+    background: var(--gray);
+    align-items: center;
+    justify-content: space-between;
+    width: 89%;
+    max-height: 130px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.SectionButtonName{
+    font-weight: var(--medium-bold);
+    color: var(--light-cyan);
+}
+
+.SectionButtonContainer img{
+    width: 35%;
+}

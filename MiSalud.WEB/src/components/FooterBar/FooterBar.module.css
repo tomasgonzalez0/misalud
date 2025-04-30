@@ -1,0 +1,13 @@
+.FooterBar{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: var(--gray);
+}
+.FooterBar img{
+    width: 25px
+}

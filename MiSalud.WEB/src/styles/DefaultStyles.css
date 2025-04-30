@@ -27,7 +27,7 @@ body
     color: #333;
     background-color: #fff;
 }
-html, body 
+html, body, #root 
 {
     height: 100%;
     scroll-behavior: smooth;

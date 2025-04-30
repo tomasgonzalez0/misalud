@@ -5,15 +5,16 @@
     width: 100%;
     height: 80px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 .WelcomeUserMessage
 {
-    font-weight: var(--medium-bold);
+    font-weight: var(--bold);
     color: var(--light-cyan);
     font-size: 1.5rem;
+    margin-left: 20px;
 }
 .userAvatarContainer
 {
@@ -24,4 +25,5 @@
 .userAvatarContainer img
 {
     width: 50px;
+    margin-right: 20px;
 }

@@ -1,11 +1,23 @@
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
-import Section from "../../components/Section/Section";
+import SectionButton from "../../components/SectionButton/SectionButton";
+import Styles from "./Home.module.css";
+import { sectionButtonsByRole } from "../../data/rolesData.js"; //Esto son nuestras constantes, los botones que tenemos
 
-export default function Home(){
-    return(
-        <article className="home">
-            <WelcomeUser/>
-            <Section id={1}/> {/*Remplazar id por dato del admin de la base de datos */}
-        </article>
-    );
+export default function Home() {
+  const botones = sectionButtonsByRole["administrador"] || []; 
+  //Le enviamos un rol a nuestro arreglo de botones, y nos devuelve el arreglo de administrador
+  //Despues lo haremos con la API, para que el rol se lo pase desde la API
+
+  return (
+    <article className={Styles["home"]}>
+      <WelcomeUser />
+      {botones.map((btn, i) => (
+        <SectionButton
+            key={i}
+            label={btn.label}
+            image={btn.img}
+            />
+      ))}  
+    </article>
+  );
 }
