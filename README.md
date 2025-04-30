@@ -43,13 +43,4 @@ cd MiSalud-API
    npm start
    ```
 
-   El frontend estará disponible en `http://localhost:3000`.
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si quieres mejorar o agregar funcionalidades, por favor haz un **fork** y envía un **pull request**.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
-```
+   El frontend estará disponible en `Despues agregamos el link`.
