@@ -1,14 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using MiSalud.API.Data;
+using MiSalud.API.Services.Implementations;
+using MiSalud.API.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IPacienteService, PacienteService>();
+var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {

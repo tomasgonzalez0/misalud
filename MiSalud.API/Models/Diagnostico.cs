@@ -7,5 +7,8 @@
         public DateTime Fecha { get; set; }
 
         public int MedicoId { get; set; }
+        public Medico? Medico { get; set; }
+
+        public ICollection<HistoriaClinica>? HistoriasClinicas { get; set; }
     }
 }

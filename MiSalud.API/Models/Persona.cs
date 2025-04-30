@@ -7,7 +7,7 @@
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
-        public string RegistroId { get; set; } // Documento o cédula
-        public string Password { get; set; } // Para login
+        public string RegistroId { get; set; }
+        public string Password { get; set; }
     }
 }
