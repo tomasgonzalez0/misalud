@@ -1,5 +1,3 @@
-Aquí tienes el archivo README actualizado y más conciso, en un solo bloque de código Markdown para que lo copies y pegues en tu repositorio de GitHub:
-
 ```markdown
 # MiSalud API
 
