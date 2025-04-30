@@ -1,13 +1,17 @@
 ```markdown
 # MiSalud API
 
-MiSalud API es una aplicación de gestión de pacientes, médicos, citas y diagnósticos. Está construida con **ASP.NET Core** y **Entity Framework Core**.
+MiSalud API es una aplicación de gestión de pacientes, médicos, citas y diagnósticos.
+Está construida con **ASP.NET Core** y **Entity Framework Core**.
 
 ## Requisitos
 
-- **.NET SDK** (versión 6 o superior) [Descargar .NET SDK](https://dotnet.microsoft.com/download)
-- **SQL Server** o **SQL Server Express** [Descargar SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-- **Visual Studio** o **Visual Studio Code** [Descargar Visual Studio Code](https://code.visualstudio.com/Download)
+- **.NET SDK** (versión 6 o superior)
+ [Descargar .NET SDK](https://dotnet.microsoft.com/download)
+- **SQL Server** o **SQL Server Express**
+ [Descargar SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- **Visual Studio** o **Visual Studio Code**
+ [Descargar Visual Studio Code](https://code.visualstudio.com/Download)
 
 ## Cómo descargar el proyecto
 
