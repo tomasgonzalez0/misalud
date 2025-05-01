@@ -1,0 +1,47 @@
+@import url('../../styles/DefaultStyles.css');
+
+.container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nameTag {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: var(--gray);
+    color: var(--light-cyan);
+    font-weight: 500;
+    padding: 2px 6px;
+    font-size: 14px;
+    z-index: 2;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    padding-top: 18px;
+    border: 2px solid var(--light-cyan);
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    color: var(--dark-cyan);
+    z-index: 1;
+  }
+
+  
+  .label {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #555;
+  }
+  
