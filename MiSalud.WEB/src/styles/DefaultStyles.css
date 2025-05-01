@@ -32,6 +32,31 @@ html, body, #root
     height: 100%;
     scroll-behavior: smooth;
 }
+.my-swal-popup {
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 1.5rem;
+    width: 300px;
+  }
+  
+  .my-swal-title {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  
+  .my-swal-text {
+    font-size: 15px;
+  }
+  
+  .my-swal-confirm-button {
+    background-color: #26c6da !important;
+    border: none !important;
+    color: white !important;
+    padding: 0.5rem 2rem;
+    border-radius: 8px !important;
+    font-weight: 500;
+    font-size: 15px;
+  }
 
   
     

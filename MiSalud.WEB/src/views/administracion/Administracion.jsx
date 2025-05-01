@@ -6,6 +6,7 @@ import OptionButton from "../../components/OptionButton/OptionButton.jsx";
 import Input from "../../components/Input/Input.jsx";
 import { useState } from "react";
 import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export default function Administracion() {
     const btn = sectionButtonsByRole["administrador"] || []; 
@@ -26,12 +27,18 @@ function AdministracionMenu() {
   
     const handleBuscarPaciente = async () => {
         if (!cedula) {
-          Swal.fire({
-            icon: 'info',
-            title: 'Ocurrió un error',
-            text: 'Primero ingrese la cédula de un paciente',
-            confirmButtonText: 'Listo',
-          });
+            Swal.fire({
+                icon: 'info',
+                title: 'Ocurrió un error',
+                text: 'Primero ingrese la cédula de un paciente',
+                confirmButtonText: 'Listo',
+                customClass: {
+                  popup: 'my-swal-popup',
+                  title: 'my-swal-title',
+                  confirmButton: 'my-swal-confirm-button',
+                  htmlContainer: 'my-swal-text'
+                }
+              });
           return;
         }
       
@@ -41,12 +48,18 @@ function AdministracionMenu() {
           const data = await res.json();
           console.log(data);// RECORDAR ELIMINAR LOS CONSOLE.LOG
         } catch (error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Paciente no encontrado',
-            text: 'Verifica que la cédula ingresada sea correcta.',
-            confirmButtonText: 'Entendido',
-          });
+            Swal.fire({
+                icon: 'error',
+                title: 'Ocurrió un error',
+                text: 'Paciente no encontrado',
+                confirmButtonText: 'Listo',
+                customClass: {
+                  popup: 'my-swal-popup',
+                  title: 'my-swal-title',
+                  confirmButton: 'my-swal-confirm-button',
+                  htmlContainer: 'my-swal-text'
+                }
+              })
           console.error("Error al buscar paciente:", error.message);
         }
       };
