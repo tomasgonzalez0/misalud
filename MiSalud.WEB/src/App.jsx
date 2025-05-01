@@ -7,9 +7,8 @@ import FormView from './views/PacientForm/Form'
 function App() {
   return (
     <>
-      <FormView />
-      {/* <Administracion />
-      <FooterBar /> */}
+      <Administracion />
+      <FooterBar />
     </>
   )
 }
