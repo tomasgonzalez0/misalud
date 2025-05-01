@@ -7,6 +7,7 @@ import Input from "../../components/Input/Input.jsx";
 import { useState } from "react";
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import InformationBlock from "../../components/InformationBlock/InformationBlock.jsx";
 
 export default function Administracion() {
     const btn = sectionButtonsByRole["administrador"] || []; 
@@ -24,6 +25,7 @@ export default function Administracion() {
 
 function AdministracionMenu() {
     const [cedula, setCedula] = useState("");
+    const [paciente, setPaciente] = useState(null);
   
     const handleBuscarPaciente = async () => {
         if (!cedula) {
@@ -47,6 +49,7 @@ function AdministracionMenu() {
           if (!res.ok) throw new Error("Paciente no encontrado");
           const data = await res.json();
           console.log(data);// RECORDAR ELIMINAR LOS CONSOLE.LOG
+          if(res.ok) setPaciente(data);
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -64,8 +67,8 @@ function AdministracionMenu() {
         }
       };
       
-  
-    return (
+    
+    if(paciente===null)return (
       <div className={Styles["AdministracionMenu"]}>
         <Input
           nameTag={"CC"}
@@ -77,6 +80,21 @@ function AdministracionMenu() {
         />
         <OptionButton text="Buscar paciente" onClick={handleBuscarPaciente} />
         <OptionButton text="Añadir paciente" onClick={() => {}} />
+      </div>
+    );
+
+    return(
+      <div className={Styles["AdministracionMenu"]}>
+          <InformationBlock
+            title="Información" 
+            text={
+              [paciente.nombre,
+              paciente.registroId,
+              paciente.direccion,
+              paciente.telefono,
+              paciente.email]}
+              />
+          <OptionButton text="Editar información." onClick={() => {}} />
       </div>
     );
   }
