@@ -1,0 +1,23 @@
+.InformationBlock{
+    background: white;
+    width: 90%;
+    border-radius: 16px;
+    margin-top: 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.TextContainer{
+    margin-left: 10px;
+}
+.TextContainer h2{
+    font-weight: var(--medium-bold);
+    color: var(--light-cyan);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.TextContainer p span{
+    font-weight: var(--light-bold);
+    color: var(--dark-cyan);
+    font-size: 1.2rem;
+}
