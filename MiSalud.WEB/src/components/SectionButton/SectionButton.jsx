@@ -1,4 +1,4 @@
-// SectionButton.jsx
+
 import Styles from "./SectionButton.module.css";
 
 export default function SectionButton({ label, image, subtitle }) {

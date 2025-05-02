@@ -1,0 +1,39 @@
+.header{
+  cursor: pointer;
+  width: 5%;
+}
+.formulario-paciente{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-container{
+  width: 80%;
+  height: 70%;
+  margin-left: 10%;
+  margin-top: 3%;
+  padding: 20px;
+  background-color: var(--gray);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.button{
+  width: 70%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer{
+  margin-top: 20px;
+}
+
+.error{
+  font-size: small;
+  color: red;
+  margin-top: 5px;
+}
+
