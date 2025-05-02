@@ -31,10 +31,19 @@ namespace MiSalud.API.Services.Implementations
 
         public async Task<Paciente> CreateAsync(Paciente paciente)
         {
+            var existente = await _context.Pacientes
+                .FirstOrDefaultAsync(p => p.RegistroId == paciente.RegistroId);
+
+            if (existente != null)
+            {
+                throw new InvalidOperationException("Ya existe un paciente con ese número de cédula.");
+            }
+
             _context.Pacientes.Add(paciente);
             await _context.SaveChangesAsync();
             return paciente;
         }
+
 
         public async Task<bool> UpdateAsync(Paciente paciente)
         {

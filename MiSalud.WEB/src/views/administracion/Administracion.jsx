@@ -50,7 +50,6 @@ function AdministracionMenu() {
           const res = await fetch(`https://localhost:7169/api/Pacientes/buscar/${cedula}`);
           if (!res.ok) throw new Error("Paciente no encontrado");
           const data = await res.json();
-          console.log(data);// RECORDAR ELIMINAR LOS CONSOLE.LOG
           if(res.ok) setPaciente(data);
         } catch (error) {
             Swal.fire({
@@ -81,7 +80,7 @@ function AdministracionMenu() {
           }}
         />
         <OptionButton text="Buscar paciente" onClick={handleBuscarPaciente} />
-        <OptionButton text="Añadir paciente" onClick={() => navigate("/formulario")} />
+        <OptionButton text="Añadir paciente" onClick={() => navigate("/formulario/add")} />
       </div>
     );
 
@@ -96,7 +95,7 @@ function AdministracionMenu() {
               paciente.telefono,
               paciente.email]}
               />
-          <OptionButton text="Editar información." onClick={() => {}} />
+          <OptionButton text="Editar información." onClick={() => navigate("/formulario/edit/"+cedula)} />
       </div>
     );
   }

@@ -21,7 +21,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/administracion" element={<Administracion />} />
-        <Route path="/formulario" element={<FormView />} />
+        <Route path="/formulario/add" element={<FormView type={"añadir"}/>} />
+        <Route path="/formulario/edit/:registroId" element={<FormView type={"editar"}/>} />
       </Routes>
       <FooterBar />
     </Router>

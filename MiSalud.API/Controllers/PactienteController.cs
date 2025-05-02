@@ -37,11 +37,24 @@ namespace MiSalud.API.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Create(Paciente paciente)
         {
-            var nuevo = await _service.CreateAsync(paciente);
-            return CreatedAtAction(nameof(GetById), new { id = nuevo.Id }, nuevo);
+            try
+            {
+                var nuevo = await _service.CreateAsync(paciente);
+                return CreatedAtAction(nameof(GetById), new { id = nuevo.Id }, nuevo);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new
+                {
+                    message = ex.Message,
+                    field = "registroId"
+                });
+            }
         }
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Paciente paciente)

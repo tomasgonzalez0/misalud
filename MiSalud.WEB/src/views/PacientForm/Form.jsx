@@ -5,17 +5,42 @@ import Input from '../../components/Input/Input';
 import { sectionButtonsByRole } from "../../data/rolesData.js";
 import FormButton from '../../components/FormsButton/FormButton.jsx';
 import Styles from './Form.module.css';
-import { useNavigate } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
-export default function FormularioPaciente({type, paciente}) {
-  const [nombre, setNombre] = useState(paciente ?paciente.nombre:'');
-  const [cedula, setCedula] = useState(paciente ?paciente.registroId:'');
-  const [direccion, setDireccion] = useState(paciente ?paciente.direccion:'');
-  const [telefono, setTelefono] = useState(paciente ?paciente.telefono:'');
-  const [email, setEmail] = useState(paciente ?paciente.email:'');
+export default function FormularioPaciente({type}) {
+  const [paciente, setPaciente] = useState(null);
+  const { registroId } = useParams();
+
+  const [nombre, setNombre] = useState('');
+  const [cedula, setCedula] = useState('');
+  const [direccion, setDireccion] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  
+  useEffect(() => {
+    if (type === "editar") {
+      fetch(`https://localhost:7169/api/Pacientes/buscar/${registroId}`)
+        .then(res => res.json())
+        .then(data => {
+          setPaciente(data);
+          setNombre(data.nombre);
+          setCedula(data.registroId);
+          setDireccion(data.direccion);
+          setTelefono(data.telefono);
+          setEmail(data.email);
+          setPassword(data.password);
+        })
+        .catch(err => console.error("Error:", err));
+    }
+  }, [registroId]);
+  
+
 
   const [errors, setErrors] = useState({
     nombre: '',
@@ -110,10 +135,16 @@ const validarTelefono = (value) => {
     const value = e.target.value;
     setPassword(value);
     setErrors({ ...errors, password: validarPassword(value) });
-  };  const navigate = useNavigate();
+  }; 
+   const navigate = useNavigate();
 
 
   const handleSubmit = async () => {
+    if (type === "editar" && !paciente) {
+      Swal.fire("Cargando", "Espere mientras se carga el paciente", "info");
+      return;
+    }
+    
     const newErrors = {
       nombre: nombre || paciente ? '' : 'El nombre es requerido',
       cedula: cedula || paciente
@@ -136,26 +167,15 @@ const validarTelefono = (value) => {
     const hayErrores = Object.values(newErrors).some(error => error !== '');
     if (hayErrores) return;
     let data;
-   if(type==="añadir"){
       data = {
       nombre,
       direccion,
       telefono,
       email,
       registroId: cedula,
-      password: password || paciente?.password, // Siempre se envía
+      password: password || paciente?.password,
       ...(type === 'editar' && { id: paciente?.id })
-    };}else{
-      data={
-        nombre: paciente.nombre,
-        direccion: paciente.direccion,
-        telefono: paciente.telefono,
-        email: paciente.email,
-        registroId: paciente.registroId,
-        password: paciente.password,
-        ...(type === 'editar' && { id: paciente?.id })
-      }
-    }
+    };
   
     const url =
       type === 'añadir'
@@ -183,22 +203,27 @@ const validarTelefono = (value) => {
             htmlContainer: 'my-swal-text'
           }
         });
+        navigate('/administracion');
       } else {
         const text = await response.text();
         throw new Error(text);
       }
     } catch (error) {
       let parsedError = 'Ocurrió un error inesperado';
+    
       try {
         const errJson = JSON.parse(error.message);
-        if (errJson?.errors) {
+
+        if (errJson?.message?.includes('Ya existe un paciente con ese número de cédula')) {
+          parsedError = 'Ya existe un paciente con esta cédula registrada.';
+        } else if (errJson?.errors) {
           parsedError = Object.values(errJson.errors).flat().join(' - ');
         }
       } catch (_) {}
-  
+    
       Swal.fire({
         icon: 'error',
-        title: 'Error',
+        title: 'Error al guardar paciente',
         text: parsedError,
         confirmButtonText: 'Listo',
         customClass: {
@@ -209,6 +234,7 @@ const validarTelefono = (value) => {
         }
       });
     }
+    
   };
   
   
@@ -238,102 +264,3 @@ const validarTelefono = (value) => {
     </div>
   );
 }
-
-
-//   const handleSubmit = () => {
-//     const newErrors = {
-//       nombre: nombre ? '' : 'El nombre es requerido',
-//       cedula: cedula ? '' : 'La cédula es requerida',
-//       direccion: direccion ? '' : 'La dirección es requerida',
-//       telefono: telefono ? '' : 'El teléfono es requerido',
-//       email: email ? '' : 'El email es requerido',
-//       password: password ? '' : 'La contraseña es requerida'
-//     };
-
-//     setErrors(newErrors);
-
-//     const hayErrores = Object.values(newErrors).some(error => error !== '');
-    
-//     if (!hayErrores) {
-//       console.log('Formulario enviado correctamente', {
-//         nombre, cedula, direccion, telefono, email
-//       });
-//       // Aquí iría la lógica para enviar los datos
-//       alert('Paciente añadido con éxito');
-//     }
-//   };
-
-//   //    {Styles[""]}
-//   return (
-//     <div className= {Styles["formulario-paciente"]}>
-//         <BackButton />
-//         <SectionButton
-//             label={btn[0].label} 
-//             image={btn[0].img} 
-//         />
-
-//         <div className= {Styles["form-container"]}>
-//           <Input 
-//             nameTag="Nombre" 
-//             value={nombre} 
-//             onChange={handleNombreChange} 
-//             type={"text"}
-//             errorMessage={errors.nombre!=="" && errors.nombre}
-//           />
-//           {//errors.nombre && <p className={Styles["error"]}>{errors.nombre}</p>
-//           }
-
-//           <Input 
-//             nameTag="Cedula" 
-//             value={cedula} 
-//             onChange={handleCedulaChange} 
-//             type={"text"}
-//             errorMessage={errors.cedula!=="" && errors.cedula}
-//           />
-//           {//errors.cedula && <p className={Styles["error"]}>{errors.cedula}</p>
-//           }
-
-//           <Input 
-//             nameTag="Direccion" 
-//             value={direccion} 
-//             onChange={handleDireccionChange} 
-//             type={"text"}
-//             errorMessage={errors.direccion!=="" && errors.direccion}
-//           />
-//           {//errors.direccion && <p className={Styles["error"]}>{errors.direccion}</p>
-//           }
-
-//           <Input 
-//             nameTag="Telefono" 
-//             value={telefono} 
-//             onChange={handleTelefonoChange} 
-//             type={"text"}
-//             errorMessage={errors.telefono!=="" && errors.telefono}
-//           />
-//           {//errors.telefono && <p className={Styles["error"]}>{errors.telefono}</p>
-//           }
-
-//           <Input 
-//             nameTag="Email" 
-//             value={email} 
-//             onChange={handleEmailChange} 
-//             type={"email"}
-//             errorMessage={errors.email!=="" && errors.email}
-//           />
-//           {//errors.email && <p className={Styles["error"]}>{errors.email}</p>
-//           }
-//           <Input 
-//             nameTag="Password" 
-//             value={password} 
-//             onChange={handlePasswordChange} 
-//             type={"password"}
-//             errorMessage={errors.password!=="" && errors.password}
-//           />
-          
-//           <FormButton text={"Añadir"} onClick={handleSubmit}  type = "button"/>
-
-          
-//         </div>
-//       </div>
-//   );
-// }
