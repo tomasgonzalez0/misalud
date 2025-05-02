@@ -5,9 +5,18 @@ import FooterBar from './components/FooterBar/FooterBar'
 import FormView from './views/PacientForm/Form'
 
 function App() {
+  const paciente ={
+    id: 6,
+    nombre: "Juan Perez",
+    registroId: "123456789",
+    direccion: "Calle Falsa 123",
+    telefono: "1234567890",
+    email: "juan@yopmail.com",
+    password: "12345678Aa."
+  }
   return (
     <>
-      <Administracion />
+      <FormView type={"añadir"}/>
       <FooterBar />
     </>
   )

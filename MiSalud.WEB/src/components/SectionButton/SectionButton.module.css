@@ -36,3 +36,7 @@
     color: var(--dark-cyan);
     transition: 0.5s;
 }
+
+.SectionButtonSubtitle{
+    color: var(--light-cyan);
+}

@@ -12,7 +12,13 @@
     display: flex;
     align-items: center;
   }
-  
+  .nameTagWrapper{
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    display: flex
+;
+  }
   .nameTag {
     position: absolute;
     top: -24px;
@@ -44,3 +50,16 @@
     color: #555;
   }
   
+  .errorMessage{
+    color: firebrick;
+    position: absolute;
+    top: -24px;
+    background-color: transparent;
+    font-weight: 500;
+    padding: 2px 6px;
+    font-size: 14px;
+    z-index: 2;
+    /* position: absolute; */
+    /* left: 66px; */
+    justify-self: anchor-center;
+  }

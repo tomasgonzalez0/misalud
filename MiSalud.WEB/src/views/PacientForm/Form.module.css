@@ -3,32 +3,28 @@
   width: 5%;
 }
 .formulario-paciente{
+  height: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
 }
 
 .form-container{
-  width: 80%;
-  height: 70%;
-  margin-left: 10%;
-  margin-top: 3%;
-  padding: 20px;
+  margin-top: 30px;
+  height: 69%;
   background-color: var(--gray);
+  width: 90%;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
   align-items: center;
+  border-radius: 16px;
 }
 
 .button{
   width: 70%;
   text-align: center;
   margin-top: 10px;
-}
-
-.footer{
-  margin-top: 20px;
 }
 
 .error{

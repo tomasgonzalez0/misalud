@@ -1,17 +1,18 @@
 
 .button {
-    background-color: #00bcd4; 
+    background-color: var(--light-cyan); 
     color: white;
     font-weight: 600;
     padding: 0.5rem 1rem;
-    width: 100%;
+    width: 90%;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 30px;
   }
   
   .button:hover {
-    background-color: #00acc1;
+    background-color: var(--dark-cyan);
   }
   
