@@ -5,23 +5,23 @@ import HistorialImg from '../img/Historial.png';
 
 export const sectionButtonsByRole = {
   administrador: [
-    { type: 'administracion', label: 'Administración', img: AdminImg },
-    { type: 'agenda', label: 'Agenda', img: AgendaImg },
-    { type: 'formulas', label: 'Fórmulas', img: FormulasImg },
-    { type: 'historial', label: 'Historial Clínico', img: HistorialImg },
+    { type: 'administracion', label: 'Administración', img: AdminImg, path: '/administracion' },
+    { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
+    { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
+    { type: 'historial', label: 'Historial Clínico', img: HistorialImg, path: '/historial' },
   ],
   medico: [
-    { type: 'agenda', label: 'Agenda', img: AgendaImg },
-    { type: 'formulas', label: 'Fórmulas', img: FormulasImg },
-    { type: 'historial', label: 'Historial Clínico', img: HistorialImg },
+    { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
+    { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
+    { type: 'historial', label: 'Historial Clínico', img: HistorialImg, path: '/historial' },
   ],
   paciente: [
-    { type: 'agenda', label: 'Agenda', img: AgendaImg },
-    { type: 'formulas', label: 'Fórmulas', img: FormulasImg },
-    { type: 'historial', label: 'Historial Clínico', img: HistorialImg },
+    { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
+    { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
+    { type: 'historial', label: 'Historial Clínico', img: HistorialImg, path: '/historial' },
   ],
   secretaria: [
-    { type: 'agenda', label: 'Agenda', img: AgendaImg },
-    { type: 'formulas', label: 'Fórmulas', img: FormulasImg },
+    { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
+    { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
   ]
 };

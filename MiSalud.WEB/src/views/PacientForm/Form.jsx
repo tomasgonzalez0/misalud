@@ -5,6 +5,7 @@ import Input from '../../components/Input/Input';
 import { sectionButtonsByRole } from "../../data/rolesData.js";
 import FormButton from '../../components/FormsButton/FormButton.jsx';
 import Styles from './Form.module.css';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -109,7 +110,9 @@ const validarTelefono = (value) => {
     const value = e.target.value;
     setPassword(value);
     setErrors({ ...errors, password: validarPassword(value) });
-  };
+  };  const navigate = useNavigate();
+
+
   const handleSubmit = async () => {
     const newErrors = {
       nombre: nombre || paciente ? '' : 'El nombre es requerido',
@@ -212,7 +215,7 @@ const validarTelefono = (value) => {
 
   return (
     <div className={Styles["formulario-paciente"]}>
-      <BackButton />
+      <BackButton route="/administracion" />
       <SectionButton
         label={btn[0].label}
         image={btn[0].img}

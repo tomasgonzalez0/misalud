@@ -3,6 +3,7 @@ import Home from './views/home/Home'
 import Administracion from './views/administracion/Administracion'
 import FooterBar from './components/FooterBar/FooterBar'
 import FormView from './views/PacientForm/Form'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   const paciente ={
@@ -16,8 +17,14 @@ function App() {
   }
   return (
     <>
-      <FormView type={"añadir"}/>
+      <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/administracion" element={<Administracion />} />
+        <Route path="/formulario" element={<FormView />} />
+      </Routes>
       <FooterBar />
+    </Router>
     </>
   )
 }

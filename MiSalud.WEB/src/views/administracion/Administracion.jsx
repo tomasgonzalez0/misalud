@@ -6,6 +6,7 @@ import OptionButton from "../../components/OptionButton/OptionButton.jsx";
 import Input from "../../components/Input/Input.jsx";
 import { useState } from "react";
 import Swal from 'sweetalert2';
+import { Navigate, useNavigate } from "react-router-dom";
 import 'sweetalert2/dist/sweetalert2.min.css';
 import InformationBlock from "../../components/InformationBlock/InformationBlock.jsx";
 
@@ -13,7 +14,7 @@ export default function Administracion() {
     const btn = sectionButtonsByRole["administrador"] || []; 
     return(
         <section className={Styles["Administracion"]}>
-            <BackButton />
+            <BackButton route="/"/>
             <SectionButton
                 label={btn[0].label} 
                 image={btn[0].img} 
@@ -26,6 +27,7 @@ export default function Administracion() {
 function AdministracionMenu() {
     const [cedula, setCedula] = useState("");
     const [paciente, setPaciente] = useState(null);
+    const navigate = useNavigate();
   
     const handleBuscarPaciente = async () => {
         if (!cedula) {
@@ -79,7 +81,7 @@ function AdministracionMenu() {
           }}
         />
         <OptionButton text="Buscar paciente" onClick={handleBuscarPaciente} />
-        <OptionButton text="Añadir paciente" onClick={() => {}} />
+        <OptionButton text="Añadir paciente" onClick={() => navigate("/formulario")} />
       </div>
     );
 
