@@ -20,4 +20,8 @@
     font-weight: var(--light-bold);
     color: var(--dark-cyan);
     font-size: 1.2rem;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

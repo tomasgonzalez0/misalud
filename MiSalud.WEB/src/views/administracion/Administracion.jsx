@@ -95,7 +95,7 @@ function AdministracionMenu() {
               paciente.telefono,
               paciente.email]}
               />
-          <OptionButton text="Editar información." onClick={() => navigate("/formulario/edit/"+cedula)} />
+          <OptionButton text="Editar información" onClick={() => navigate("/formulario/edit/"+cedula)} />
       </div>
     );
   }
