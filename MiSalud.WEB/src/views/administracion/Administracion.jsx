@@ -89,11 +89,11 @@ function AdministracionMenu() {
           <InformationBlock
             title="Información" 
             text={
-              [paciente.nombre,
-              paciente.registroId,
-              paciente.direccion,
-              paciente.telefono,
-              paciente.email]}
+              [<b>Nombre</b>,paciente.nombre,
+              <b>Cedula</b>,paciente.registroId,
+              <b>Dirección</b>,paciente.direccion,
+              <b>Cel</b>,paciente.telefono,
+              <b>Email</b>,paciente.email]}
               />
           <OptionButton text="Editar información" onClick={() => navigate("/formulario/edit/"+cedula)} />
       </div>

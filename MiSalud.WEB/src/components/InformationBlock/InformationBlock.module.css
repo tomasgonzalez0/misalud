@@ -25,3 +25,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.TextContainer p b{
+    color: var(--light-cyan);
+    font-weight: var(--light-bold);
+}
