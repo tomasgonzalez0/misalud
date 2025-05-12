@@ -65,7 +65,7 @@ const validarTelefono = (value) => {
   const validarEmail = (value) => {
     const emailV = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailV.test(value) && value !== '') {
-      return 'Formato de correo electrónico inválido';
+      return ' Formato email inválido';
     }
     return '';
   };
@@ -78,19 +78,19 @@ const validarTelefono = (value) => {
   };
   const validarPassword = (value) => {
     if (!value || value.length < 8) {
-      return 'Al menos 8 caracteres';
+      return 'Falta 8 caracteres';
     }
     if (!/[A-Z]/.test(value)) {
-      return 'Al menos una letra mayúscula';
+      return 'Falta una letra mayúscula';
     }
     if (!/[a-z]/.test(value)) {
-      return 'Al menos una letra minúscula';
+      return 'Falta una letra minúscula';
     }
     if (!/[0-9]/.test(value)) {
-      return 'Al menos un número';
+      return 'Falta un número';
     }
     if (!/[!@#$%^&*(),.?":{}|<>_\-+=/\\[\]~`]/.test(value)) {
-      return 'Al menos un carácter especial';
+      return 'Falta un carácter especial';
     }
     return '';
   };
@@ -159,7 +159,7 @@ const validarTelefono = (value) => {
         type === 'añadir'
           ? password
             ? validarPassword(password)
-            : 'La contraseña es requerida'
+            : 'Contraseña requerida'
           : ''
     };
   
@@ -249,14 +249,14 @@ const validarTelefono = (value) => {
       />
 
       <div className={Styles["form-container"]}>
-        <Input nameTag="Nombre" value={nombre} onChange={handleNombreChange} type="text" errorMessage={errors.nombre} />
-        <Input nameTag="Cedula" value={cedula} onChange={handleCedulaChange} type="text" errorMessage={errors.cedula} />
-        <Input nameTag="Direccion" value={direccion} onChange={handleDireccionChange} type="text" errorMessage={errors.direccion} />
-        <Input nameTag="Telefono" value={telefono} onChange={handleTelefonoChange} type="text" errorMessage={errors.telefono} />
-        <Input nameTag="Email" value={email} onChange={handleEmailChange} type="email" errorMessage={errors.email} />
+        <Input nameTag="Nombre *" value={nombre} onChange={handleNombreChange} type="text" errorMessage={errors.nombre} />
+        <Input nameTag="Cédula *" value={cedula} onChange={handleCedulaChange} type="text" errorMessage={errors.cedula} />
+        <Input nameTag="Dirección *" value={direccion} onChange={handleDireccionChange} type="text" errorMessage={errors.direccion} />
+        <Input nameTag="Teléfono *" value={telefono} onChange={handleTelefonoChange} type="text" errorMessage={errors.telefono} />
+        <Input nameTag="Email *" value={email} onChange={handleEmailChange} type="email" errorMessage={errors.email} />
 
         {type === 'añadir' && (
-          <Input nameTag="Password" value={password} onChange={handlePasswordChange} type="password" errorMessage={errors.password} />
+          <Input nameTag="Contraseña *" value={password} onChange={handlePasswordChange} type="password" errorMessage={errors.password} />
         )}
 
         <FormButton text={type === 'añadir' ? 'Añadir' : 'Editar'} onClick={handleSubmit} type="button" />
