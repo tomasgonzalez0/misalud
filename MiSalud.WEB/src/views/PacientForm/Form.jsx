@@ -146,18 +146,18 @@ const validarTelefono = (value) => {
     }
     
     const newErrors = {
-      nombre: nombre || paciente ? '' : 'El nombre es requerido',
-      cedula: cedula || paciente
+      nombre: nombre.trim() ? '' : 'El nombre es requerido',
+      cedula: cedula.trim()
         ? /^\d+$/.test(cedula)
           ? ''
           : 'Solo se permiten números'
         : 'La cédula es requerida',
-      direccion: direccion || paciente ? validarDireccion(direccion) : 'La dirección es requerida',
-      telefono: telefono || paciente ? validarTelefono(telefono) : 'El teléfono es requerido',
-      email: email || paciente? validarEmail(email) : 'El email es requerido',
+      direccion: direccion.trim() ? validarDireccion(direccion) : 'La dirección es requerida',
+      telefono: telefono.trim() ? validarTelefono(telefono) : 'El teléfono es requerido',
+      email: email.trim() ? validarEmail(email) : 'El email es requerido',
       password:
         type === 'añadir'
-          ? password
+          ? password.trim()
             ? validarPassword(password)
             : 'Contraseña requerida'
           : ''
