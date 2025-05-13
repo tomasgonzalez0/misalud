@@ -4,24 +4,26 @@ import FormulasImg from '../img/Formula.png';
 import HistorialImg from '../img/Historial.png';
 
 export const sectionButtonsByRole = {
-  administrador: [
+  Administrador: [
     { type: 'administracion', label: 'Administración', img: AdminImg, path: '/administracion' },
     { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
     { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
     { type: 'historial', label: 'Historial Clínico', img: HistorialImg, path: '/historial' },
   ],
-  medico: [
+  Medico: [
     { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
     { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
     { type: 'historial', label: 'Historial Clínico', img: HistorialImg, path: '/historial' },
   ],
-  paciente: [
+  Paciente: [
     { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
     { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
     { type: 'historial', label: 'Historial Clínico', img: HistorialImg, path: '/historial' },
   ],
-  secretaria: [
+  Secretaria: [
+    { type: 'administracion', label: 'Administración', img: AdminImg, path: '/administracion' },
     { type: 'agenda', label: 'Agenda', img: AgendaImg, path: '/agenda' },
     { type: 'formulas', label: 'Fórmulas', img: FormulasImg, path: '/formulas' },
+    
   ]
 };

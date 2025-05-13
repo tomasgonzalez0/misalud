@@ -51,7 +51,7 @@ export default function FormularioPaciente({type}) {
     password: ''
   });
 
-  const btn = sectionButtonsByRole["administrador"] || []; 
+  const btn = sectionButtonsByRole["Administrador"] || []; 
 
 const validarTelefono = (value) => {
   if (!/^\+?\d{7,15}$/.test(value.replace(/[\s()-]/g, ''))) {

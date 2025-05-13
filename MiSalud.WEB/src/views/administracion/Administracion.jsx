@@ -11,7 +11,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import InformationBlock from "../../components/InformationBlock/InformationBlock.jsx";
 
 export default function Administracion() {
-    const btn = sectionButtonsByRole["administrador"] || []; 
+    const btn = sectionButtonsByRole["Administrador"] || []; 
     return(
         <section className={Styles["Administracion"]}>
             <BackButton route="/"/>

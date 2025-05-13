@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Home() {
+  const rol =  "Secretaria";
   const navigate = useNavigate();
-  const botones = sectionButtonsByRole["administrador"] || [];
+  const botones = sectionButtonsByRole[rol] || [];
 
   const handleClick = (path) => {
     navigate(path);
@@ -15,7 +16,7 @@ export default function Home() {
 
   return (
     <article className={Styles["home"]}>
-      <WelcomeUser />
+      <WelcomeUser rol={rol}/>
       {botones.map((btn, i) => (
         <div key={i} onClick={() => handleClick(btn.path)} >
           <SectionButton
