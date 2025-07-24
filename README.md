@@ -1,84 +1,78 @@
 # MiSalud API
 
-MiSalud API es una aplicación de gestión de pacientes, médicos, citas y diagnósticos.  
-Está construida con **ASP.NET Core** y **Entity Framework Core**.
+MiSalud API is an application for managing patients, doctors, appointments, and diagnoses.  
+It is built with **ASP.NET Core** and **Entity Framework Core**.
 
-## Requisitos
+## Requirements
 
-- **.NET SDK** (versión 6 o superior)  
-  [Descargar .NET SDK](https://dotnet.microsoft.com/download)
-- **SQL Server** o **SQL Server Express**  
-  [Descargar SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-- **Visual Studio** o **Visual Studio Code**  
-  [Descargar Visual Studio Code](https://code.visualstudio.com/Download)
+- **.NET SDK** (version 6 or higher)  
+  [Download .NET SDK](https://dotnet.microsoft.com/download)
+- **SQL Server** or **SQL Server Express**  
+  [Download SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- **Visual Studio** or **Visual Studio Code**  
+  [Download Visual Studio Code](https://code.visualstudio.com/Download)
 
-## Cómo descargar el proyecto
+## How to Download the Project
 
 ```bash
 git clone https://github.com/tuusuario/MiSalud.git
 cd MiSalud.API
 ```
 
+## Database Migration
 
-## Migración de la base de datos
+1. Open **MiSalud.API** in Visual Studio.
+2. In the **Terminal**, run:
+   ```bash
+   dotnet ef database update
+   ```
+This will create the database and tables.
 
-1. Abre **MiSalud.API** en Visual Studio.
-2. En la **Terminal**, ejecuta:
+## Run the Project
 
-```markdown
-dotnet ef database update
-```
-
-Esto creará la base de datos y las tablas.
-
-## Ejecutar el proyecto
-
-1. Abre **MiSalud.API** en **Visual Studio**.
-2. Ejecuta la API con **F5** o el botón de "Ejecutar" en Visual Studio.
+1. Open **MiSalud.API** in **Visual Studio**.
+2. Run the API with **F5** or the "Run" button in Visual Studio.
    
-Otra opcion en caso de no tener visual studio, usar el siguiente comando parado en MiSalud.API
-```markdown
-dotnet run
-```
-<br> <br/>
+Alternatively, if you do not have Visual Studio, use the following command in the MiSalud.API directory:
+   ```bash
+   dotnet run
+   ```
 
 # MiSalud WEB (Frontend)
 
-1. Abre **MiSalud.WEB** en **Visual Studio Code** o en la **terminal**.
-2. Ejecuta el proyecto desde el terminal:
+1. Open **MiSalud.WEB** in **Visual Studio Code** or in the **terminal**.
+2. Run the project from the terminal:
+   ```bash
+   npm install
+   npm install react-router-dom
+   npm run dev
+   ```
+You will get a local server where the frontend will be running `localhost:XXXX`.
 
-```markdown
-npm install
-npm install react-router-dom
-npm run dev
-```
+# Project Configuration
 
-Nos arrojara un servidor local donde se ejecutara el frontend `localhost:XXXX`.
-<br><br/>
-# Configurar el proyecto
+### Frontend Changes (WEB)
 
-### Cambios en el front (WEB)
+* Change the `fetch` requests in the frontend (**MiSalud.WEB**) to the `localhost:XXXX` of your API.
 
-* Cambiar las peticiones `fetch` en el front (**MiSalud.WEB**) al `localhost:XXXX` de tu API.
+### API Changes
 
-### Cambios en la API
+* Change in `Program.cs` (**MiSalud.API**) the address:
 
-* Cambiar en el `Program.cs` (**MiSalud.API**) la dirección de:
+   ```csharp
+   policy.WithOrigins("")
+   ```
 
-```csharp
-policy.WithOrigins("")
-```
+to the address of your Frontend:
 
-por la dirección de tu Frontend:
+   ```csharp
+   policy.WithOrigins("http://localhost:XXXX")
+   ```
 
-```csharp
-policy.WithOrigins("http://localhost:XXXX")
-```
+* If you work on Linux distributions or have a restricted SQL configuration, modify the connection string as follows:
 
-* Si trabajas en distribuciones Linux o tienes una configuración de SQL restringida, modifica la cadena de conexión de esta manera:
-
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Server=localhost;Database=MiSalud;User Id=TuId(sa);Password=TuContraseña.;TrustServerCertificate=true;"
-}
-```
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=localhost;Database=MiSalud;User Id=YourId(sa);Password=YourPassword.;TrustServerCertificate=true;"
+   }
+   ```
