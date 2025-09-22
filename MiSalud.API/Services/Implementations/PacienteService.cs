@@ -1,63 +1,60 @@
-﻿using MiSalud.API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MiSalud.API.Data;
 using MiSalud.API.Models;
 using MiSalud.API.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace MiSalud.API.Services.Implementations
 {
     public class PacienteService : IPacienteService
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _db;
 
-        public PacienteService(ApplicationDbContext context)
+        public PacienteService(ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
 
         public async Task<List<Paciente>> GetAllAsync()
         {
-            return await _context.Pacientes.ToListAsync();
+            return await _db.Pacientes.AsNoTracking().ToListAsync();
         }
 
         public async Task<Paciente?> GetByIdAsync(int id)
         {
-            return await _context.Pacientes.FindAsync(id);
+            return await _db.Pacientes.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Paciente?> GetByCedulaAsync(string cedula)
         {
-            return await _context.Pacientes.FirstOrDefaultAsync(p => p.RegistroId == cedula);
+            return await _db.Pacientes.AsNoTracking().FirstOrDefaultAsync(p => p.RegistroId == cedula);
         }
 
         public async Task<Paciente> CreateAsync(Paciente paciente)
         {
-            var existente = await _context.Pacientes
-                .FirstOrDefaultAsync(p => p.RegistroId == paciente.RegistroId);
+            // Validar unicidad de RegistroId
+            var exists = await _db.Personas.AnyAsync(p => p.RegistroId == paciente.RegistroId);
+            if (exists)
+                throw new InvalidOperationException("Ya existe un paciente con ese RegistroId.");
 
-            if (existente != null)
-            {
-                throw new InvalidOperationException("Ya existe un paciente con ese número de cédula.");
-            }
-
-            _context.Pacientes.Add(paciente);
-            await _context.SaveChangesAsync();
+            // NO tocar contraseñas aquí; las credenciales se manejan con Identity.
+            _db.Pacientes.Add(paciente);
+            await _db.SaveChangesAsync();
             return paciente;
         }
 
-
         public async Task<bool> UpdateAsync(Paciente paciente)
         {
-            var existente = await _context.Pacientes.FindAsync(paciente.Id);
-            if (existente == null) return false;
+            var current = await _db.Pacientes.FirstOrDefaultAsync(p => p.Id == paciente.Id);
+            if (current == null) return false;
 
-            existente.Nombre = paciente.Nombre;
-            existente.Direccion = paciente.Direccion;
-            existente.Email = paciente.Email;
-            existente.Telefono = paciente.Telefono;
-            existente.RegistroId = paciente.RegistroId;
-            existente.Password = paciente.Password;
+            // Campos básicos (sin password)
+            current.Nombre = paciente.Nombre;
+            current.Email = paciente.Email;
+            current.Direccion = paciente.Direccion;
+            current.Telefono = paciente.Telefono;
+            current.RegistroId = paciente.RegistroId;
 
-            await _context.SaveChangesAsync();
+            await _db.SaveChangesAsync();
             return true;
         }
     }

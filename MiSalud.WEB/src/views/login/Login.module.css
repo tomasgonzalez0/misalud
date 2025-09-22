@@ -1,0 +1,296 @@
+/* Reutilizamos tu paleta existente de :root */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.loginInput{
+  width: 100% !important; 
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: -150px;
+  right: -150px;
+  pointer-events: none;
+  filter: blur(2px);
+}
+.page::after {
+  top: auto;
+  bottom: -160px;
+  left: -160px;
+  background: radial-gradient(circle at 55% 55%, rgba(77,123,128,0.22), transparent 70%);
+}
+
+.card {
+  width: 100%;
+  max-width: var(--width-breaker);
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  position: relative;
+  animation: fadeIn .55s cubic-bezier(.4,0,.2,1);
+}
+
+.logo {
+  width: min(68%, 250px);
+  margin: 0 auto .25rem;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.title {
+  font-size: clamp(1.55rem, 1.85rem, 2rem);
+  text-align: center;
+  font-weight: var(--bold);
+  letter-spacing: .5px;
+  color: #222;
+  margin: 0;
+}
+
+.subtitle {
+  margin: -.35rem 0 .4rem;
+  text-align: center;
+  font-size: .95rem;
+  color: #555;
+  line-height: 1.35;
+  font-weight: var(--light-bold);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  width: 100%;
+  margin-top: .25rem;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+}
+
+/* Ajustes para tu componente Input: 
+   Si internamente aplica estilos, estos actúan como capas adicionales */
+.fieldGroup :global(input),
+.fieldGroup :global(textarea) {
+  font-family: inherit;
+  font-weight: var(--medium-bold);
+  background: #f9fafb;
+  border: 1px solid #d9dde0;
+  padding: .85rem .9rem;
+  font-size: .93rem;
+  transition: border-color .25s, background .25s, box-shadow .25s;
+  color: #222;
+}
+
+.fieldGroup :global(input:focus),
+.fieldGroup :global(textarea:focus) {
+  outline: none;
+  border-color: var(--light-cyan);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(40,187,201,0.28);
+}
+
+.fieldGroup :global(.input-error) {
+  border-color: #d64545 !important;
+  box-shadow: 0 0 0 3px rgba(214,69,69,0.18);
+}
+
+.fieldGroup :global(.input-error:focus) {
+  border-color: #d64545 !important;
+}
+
+/* Error de campo proveniente de tu componente Input */
+.fieldGroup :global(.input-error-message),
+.fieldGroup :global(.error-message) {
+  font-size: .68rem;
+  line-height: 1.1;
+  color: #d64545;
+  font-weight: var(--medium-bold);
+  letter-spacing: .4px;
+  padding-left: 2px;
+  margin-top: 2px;
+  animation: fadeIn .3s;
+}
+
+.metaRow {
+  margin-top: -0.4rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.forgotPassword {
+  font-size: .78rem;
+  font-weight: var(--medium-bold);
+  color: var(--light-cyan);
+  cursor: pointer;
+  transition: color .25s;
+  position: relative;
+}
+
+.forgotPassword:hover {
+  color: var(--dark-cyan);
+}
+
+.submitButton {
+  margin-top: .2rem;
+  background: var(--light-cyan);
+  border: none;
+  color: #fff;
+  font-weight: var(--bold);
+  font-size: .95rem;
+  letter-spacing: .5px;
+  padding: .95rem 1.1rem;
+  border-radius: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  position: relative;
+  box-shadow: 0 4px 16px -6px rgba(40,187,201,0.6);
+  transition: filter .25s, transform .18s cubic-bezier(.4,0,.2,1), box-shadow .25s;
+}
+
+.submitButton:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 22px -4px rgba(40,187,201,0.55);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(1px) scale(.985);
+}
+
+.submitButton:disabled {
+  opacity: .58;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.loading::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.5);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+.serverError {
+  background: #ffe9e9;
+  border: 1px solid #f5c2c2;
+  color: #c83c3c;
+  padding: .65rem .8rem;
+  font-size: .73rem;
+  line-height: 1.25;
+  border-radius: 12px;
+  display: flex;
+  gap: .6rem;
+  align-items: flex-start;
+  animation: fadeIn .35s;
+  position: relative;
+  font-weight: var(--medium-bold);
+}
+
+.serverError::before {
+  content: "!";
+  font-weight: var(--bold);
+  font-size: .7rem;
+  background: #c83c3c;
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.registerHint {
+  margin: .4rem 0 0;
+  font-size: .85rem;
+  text-align: center;
+  color: #555;
+  font-weight: var(--light-bold);
+}
+
+.registerHint span {
+  color: var(--light-cyan);
+  font-weight: var(--medium-bold);
+  cursor: pointer;
+  position: relative;
+  padding: 2px 0;
+  transition: color .3s;
+}
+
+.registerHint span::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg,var(--light-cyan), var(--dark-cyan));
+  transition: width .35s;
+  border-radius: 2px;
+}
+
+.registerHint span:hover {
+  color: var(--dark-cyan);
+}
+
+.registerHint span:hover::after {
+  width: 100%;
+}
+
+.card :focus-visible {
+  outline: 3px solid rgba(40,187,201,.55);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Adaptaciones responsive */
+@media (max-width: 440px) {
+  .card {
+    padding: 1.7rem 1.25rem 2rem;
+    min-height: 100vh;
+  }
+  .title {
+    font-size: 1.45rem;
+  }
+  .submitButton {
+    font-size: .9rem;
+  }
+}
+
+/* Centrado vertical cuando hay altura suficiente */
+@media (min-height: 780px) {
+  .page {
+    align-items: center;
+  }
+}

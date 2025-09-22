@@ -5,5 +5,7 @@
         public string Especialidad { get; set; }
         public ICollection<Cita>? Citas { get; set; }
         public ICollection<Diagnostico>? Diagnosticos { get; set; }
+
+        public ICollection<DisponibilidadMedico>? Disponibilidades { get; set; }
     }
 }

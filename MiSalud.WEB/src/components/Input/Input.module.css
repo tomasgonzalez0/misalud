@@ -1,10 +1,10 @@
 @import url('../../styles/DefaultStyles.css');
 
 .container {
-    width: 90%;
     display: flex;
     flex-direction: column;
     margin-top: 34px;
+    width: 90%;
   }
   
   .inputWrapper {
@@ -41,6 +41,10 @@
     box-sizing: border-box;
     color: var(--dark-cyan);
     z-index: 1;
+  }
+
+  .input::placeholder{
+    color: var(--light-cyan)
   }
 
   

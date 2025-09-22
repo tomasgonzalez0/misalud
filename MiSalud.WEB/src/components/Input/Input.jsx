@@ -1,9 +1,9 @@
 import React from 'react';
 import Styles from './Input.module.css';
 
-const Input = ({ nameTag, label, value, onChange, type, errorMessage }) => {
+const Input = ({ nameTag, label, value, onChange, type, errorMessage, placeholder, className }) => {
     return (
-      <div className={Styles["container"]}>
+      <div className={`${Styles["container"]} ${className || ""}`}>
         <div className={Styles["inputWrapper"]}>
           <div className={Styles["nameTagWrapper"]}>
             <span className={Styles["nameTag"]}>{nameTag}</span>
@@ -15,6 +15,7 @@ const Input = ({ nameTag, label, value, onChange, type, errorMessage }) => {
             value={value}
             onChange={onChange}
             type={type}
+            placeholder={placeholder}
           />
         </div>
         {label && <label className={Styles["label"]}>{label}</label>}
